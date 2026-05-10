@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>母亲节快乐｜愿妈妈心长乐 福无边</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: "SimSun", "STFangsong", FangSong, "Microsoft YaHei", sans-serif;
+				font-weight: 550;
+				/* 仿宋体轻微加粗 */
+			}
+
+			body {
+				background: #FFD6E0;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 20px 15px;
+				overflow: hidden;
+				position: relative;
+			}
+
+			/* 底层大爱心 柔和跳动 */
+			.bg-heart {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 420px;
+				color: rgba(255, 80, 115, 0.12);
+				z-index: -1;
+				animation: bgHeartBeat 2.8s ease-in-out infinite;
+				pointer-events: none;
+			}
+
+			@keyframes bgHeartBeat {
+
+				0%,
+				100% {
+					transform: translate(-50%, -50%) scale(1)
+				}
+
+				50% {
+					transform: translate(-50%, -50%) scale(1.1)
+				}
+			}
+
+			/* 全局呼吸光晕背景 */
+			body::before {
+				content: "";
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: radial-gradient(circle at 50% 50%, rgba(255, 180, 205, 0.45), transparent 72%);
+				animation: bgBreath 6.5s ease-in-out infinite;
+				z-index: -2;
+			}
+
+			@keyframes bgBreath {
+
+				0%,
+				100% {
+					opacity: 0.75;
+					transform: scale(1)
+				}
+
+				50% {
+					opacity: 1;
+					transform: scale(1.04)
+				}
+			}
+
+			/* 顶部标题 */
+			.main-title {
+				font-size: 48px;
+				font-weight: bold;
+				font-family: "'Segoe Script',cursive";
+				background: linear-gradient(90deg, #ff4d88, #c9184a);
+				-webkit-background-clip: text;
+				color: transparent;
+				margin-bottom: 8px;
+				text-shadow: 0 0 14px rgba(255, 77, 136, 0.35);
+				letter-spacing: 4px;
+				position: relative;
+				z-index: 10;
+			}
+
+			.sub-title {
+				font-size: 16px;
+				color: #b05e7d;
+				margin-bottom: 45px;
+				letter-spacing: 2px;
+				position: relative;
+				z-index: 10;
+			}
+
+			/* 透明文案卡片，无边框无背景，保留流光 */
+			.card {
+				background: transparent;
+				width: 100%;
+				max-width: 420px;
+				padding: 38px 32px;
+				border-radius: 26px;
+				position: relative;
+				overflow: hidden;
+				z-index: 1;
+			}
+
+			.card::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 225, 235, 0.32), transparent);
+				animation: shiny 8.5s linear infinite;
+			}
+
+			@keyframes shiny {
+				0% {
+					left: -100%
+				}
+
+				100% {
+					left: 100%
+				}
+			}
+
+			.text-line {
+				font-size: 20px;
+				color: #c9184a;
+				margin: 16px 0;
+				letter-spacing: 2px;
+				position: relative;
+				z-index: 2;
+				text-align: center;
+			}
+
+			/* 英文花体统一字号 */
+			.en-text {
+				font-family: "'Segoe Script',cursive";
+				font-size: 20px;
+				color: #c9184a;
+			}
+
+			.emo {
+				font-size: 20px;
+				margin: 8px 0;
+			}
+
+			/* 仅 LOVE 和爱心跳动 + 可点击 */
+			@keyframes beat {
+
+				0%,
+				100% {
+					transform: scale(1)
+				}
+
+				50% {
+					transform: scale(1.08)
+				}
+			}
+
+			.beat-item {
+				display: inline-block;
+				animation: beat 1s infinite;
+				cursor: pointer;
+			}
+
+			/* 🌹自转 + 鼠标手型可点击 */
+			@keyframes rotate {
+				0% {
+					transform: rotate(0deg)
+				}
+
+				100% {
+					transform: rotate(360deg)
+				}
+			}
+
+			.rotate-rose {
+				display: inline-block;
+				animation: rotate 4.2s linear infinite;
+				cursor: pointer;
+			}
+
+			/* 开头♥左右晃动 + 可点击 */
+			@keyframes shake {
+
+				0%,
+				100% {
+					transform: rotate(-8deg)
+				}
+
+				50% {
+					transform: rotate(8deg)
+				}
+			}
+
+			.shake-heart {
+				display: inline-block;
+				animation: shake 0.8s ease-in-out infinite;
+				cursor: pointer;
+			}
+
+			/* 飘落：玫瑰/爱心/星星 柔和穿透 */
+			.petal,
+			.star,
+			.fallHeart {
+				position: fixed;
+				top: -10%;
+				z-index: 5;
+				animation: fall linear infinite;
+				opacity: 0.62;
+				pointer-events: none;
+			}
+
+			.petal {
+				color: #ff4d6d
+			}
+
+			.star {
+				color: #ffd700
+			}
+
+			.fallHeart {
+				color: #ff8fab
+			}
+
+			@keyframes fall {
+				0% {
+					transform: translateY(0) rotate(0deg)
+				}
+
+				100% {
+					transform: translateY(100vh) rotate(360deg)
+				}
+			}
+
+			/* 点击爱心特效 */
+			.click-heart {
+				position: absolute;
+				pointer-events: none;
+				animation: clickBeat 1s ease-out forwards;
+				font-size: 28px;
+				color: #ff4d6d;
+				text-shadow: 0 0 10px rgba(255, 77, 109, 0.55);
+				z-index: 100;
+			}
+
+			@keyframes clickBeat {
+				0% {
+					transform: scale(0);
+					opacity: 1
+				}
+
+				100% {
+					transform: scale(2.4);
+					opacity: 0
+				}
+			}
+
+			/* 全屏鲜花弹窗容器 */
+			.full-bouquet {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: rgba(255, 214, 224, 0.25);
+				display: none;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				z-index: 9999;
+				animation: bouquetShake 0.7s ease-in-out infinite;
+			}
+
+			/* 花束样式 */
+			.bouquet-icon {
+				font-size: 30vw;
+				line-height: 1;
+			}
+
+			/* 美化后爱你文字 */
+			.love-text {
+				font-size: 5.5vw;
+				color: #b81e40;
+				margin-top: 16px;
+				letter-spacing: 8px;
+				font-weight: 600;
+				font-family: "SimSun", "STFangsong", serif;
+				text-shadow: 0 2px 8px rgba(184, 30, 64, 0.25);
+			}
+
+			/* 花束左右摇晃 */
+			@keyframes bouquetShake {
+
+				0%,
+				100% {
+					transform: rotate(-5deg)
+				}
+
+				50% {
+					transform: rotate(5deg)
+				}
+			}
+
+			/* 点击晃动♥触发：小爱心拼成大爱心+心脏跳动 */
+			.big-heart-container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: rgba(255, 210, 220, 0.15);
+				display: none;
+				align-items: center;
+				justify-content: center;
+				z-index: 9998;
+			}
+
+			.big-heart {
+				font-size: 32vw;
+				color: #ff6b9d;
+				text-shadow: 0 0 30px rgba(255, 107, 157, 0.4);
+				animation: heartBeat 0.8s ease-in-out infinite;
+			}
+
+			@keyframes heartBeat {
+
+				0%,
+				100% {
+					transform: scale(1)
+				}
+
+				14% {
+					transform: scale(1.15)
+				}
+
+				28% {
+					transform: scale(1)
+				}
+
+				42% {
+					transform: scale(1.15)
+				}
+
+				56%,
+				100% {
+					transform: scale(1)
+				}
+			}
+
+			/* 点击跳动❤️触发：全屏颜文字 ε(´｡•᎑•`)っ♡ 跳动 */
+			.face-heart-box {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background: rgba(255, 210, 220, 0.15);
+				display: none;
+				align-items: center;
+				justify-content: center;
+				z-index: 9997;
+			}
+
+			.face-text {
+				font-size: 8vw;
+				color: #c9184a;
+				white-space: nowrap;
+				animation: faceBeat 0.9s ease-in-out infinite;
+			}
+
+			@keyframes faceBeat {
+
+				0%,
+				100% {
+					transform: scale(1)
+				}
+
+				50% {
+					transform: scale(1.1)
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 背景大爱心 -->
+		<div class="bg-heart">♥</div>
+		<!-- 顶部标题 -->
+		<div class="main-title">母亲节快乐</div>
+		<div class="sub-title">Happy Mother's Day</div>
+		<!-- 透明卡片 居中排版 -->
+		<div class="card">
+			<div class="text-line">\<span class="shake-heart" id="clickHeart">♥</span>/²⁰²⁶/₀₅·₁₀ 母亲节快乐 <span
+					class="rotate-rose" id="rose">🌹</span></div>
+			<div class="text-line en-text">I <span class="beat-item">LOVE</span> YOU</div>
+			<div class="text-line emo">٩(๛ ˘ ³˘)<span class="beat-item" id="faceClick">❤</span>۶</div>
+			<div class="text-line" style="margin-top:22px;">愿妈妈：</div>
+			<div class="text-line">心长乐 福无边</div>
+			<div class="text-line">平安喜乐 岁岁年年</div>
+			<div class="text-line emo">⌯ᵔᗜᵔ⌯ಣ</div>
+		</div>
+		<!-- 全屏摇晃鲜花 + 美化爱你 -->
+		<div class="full-bouquet" id="bouquet">
+			<div class="bouquet-icon">💐</div>
+			<div class="love-text">爱你</div>
+		</div>
+		<!-- 点击晃动♥出现：粉色大爱心+心脏跳动 -->
+		<div class="big-heart-container" id="heartBox">
+			<div class="big-heart">♥</div>
+		</div>
+		<!-- 点击跳动❤️出现：颜文字 ε(´｡•᎑•`)っ♡ 全屏跳动 -->
+		<div class="face-heart-box" id="faceBox">
+			<div class="face-text">ε(´｡•᎑•`)っ♡</div>
+		</div>
+		<!-- 感恩有你 背景音乐 -->
+		<audio autoplay loop muted id="bgMusic">
+			<source src="https://assets.mixkit.co/sfx/preview/mixkit-graceful-piano-ambience-1189.mp3"
+				type="audio/mpeg">
+
+			<script>
+				// 点击播放，音量柔和
+				const audio = document.getElementById('bgMusic');
+				document.body.addEventListener('click', () => {
+					audio.muted = false;
+					audio.volume = 0.52;
+				}, {
+					once: true
+				})
+				// 柔和飘落
+				function createFall() {
+					const types = ['🌹', '❤️', '✨'];
+					const t = types[Math.floor(Math.random() * types.length)];
+					const el = document.createElement('div');
+					el.className = t === '🌹' ? 'petal' : t === '❤️' ? 'fallHeart' : 'star';
+					el.innerHTML = t;
+					el.style.left = Math.random() * 100 + 'vw';
+					el.style.fontSize = Math.random() * 14 + 10 + 'px';
+					el.style.animationDuration = Math.random() * 10 + 7 + 's';
+					document.body.appendChild(el);
+					setTimeout(() => el.remove(), 17000)
+				}
+				setInterval(createFall, 420);
+				// 点击爱心
+				document.addEventListener('click', (e) => {
+					const h = document.createElement('div');
+					h.className = 'click-heart';
+					h.innerHTML = '💗';
+					h.style.left = e.clientX + 'px';
+					h.style.top = e.clientY + 'px';
+					document.body.appendChild(h);
+					setTimeout(() => h.remove(), 1000)
+				})
+				// 1. 点击旋转玫瑰，弹出摇晃花束+爱你，3秒消失
+				const rose = document.getElementById('rose');
+				const bouquet = document.getElementById('bouquet');
+				rose.addEventListener('click', () => {
+					bouquet.style.display = 'flex';
+					setTimeout(() => {
+						bouquet.style.display = 'none';
+					}, 3000);
+				})
+				// 2. 点击晃动♥，全屏粉色大爱心心脏跳动3秒
+				const clickHeart = document.getElementById('clickHeart');
+				const heartBox = document.getElementById('heartBox');
+				clickHeart.addEventListener('click', () => {
+					heartBox.style.display = 'flex';
+					setTimeout(() => {
+						heartBox.style.display = 'none';
+					}, 3000)
+				})
+				// 3. 点击跳动的❤️，全屏颜文字 ε(´｡•᎑•`)っ♡ 跳动3秒
+				const faceClick = document.getElementById('faceClick');
+				const faceBox = document.getElementById('faceBox');
+				faceClick.addEventListener('click', () => {
+					faceBox.style.display = 'flex';
+					setTimeout(() => {
+						faceBox.style.display = 'none';
+					}, 3000)
+				})
+			</script>
+	</body>
+</html>
